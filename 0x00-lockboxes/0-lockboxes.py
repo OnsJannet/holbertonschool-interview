@@ -3,7 +3,7 @@
 
 def canUnlockAll(boxes):
     ''' determines if all the boxes can be opened '''
-        all_boxes = [0]
+    all_boxes = [0]
     for key in all_boxes:
         for boxes_kies in boxes[key]:
             if boxes_kies not in all_boxes:
