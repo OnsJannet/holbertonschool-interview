@@ -13,6 +13,6 @@ def canUnlockAll(boxes):
             if boxes_kies not in all_boxes:
                 if boxes_kies < len(boxes):
                     all_boxes.append(boxes_kies)
-    if len(all_boxes) is len(boxes):
+    if len(all_boxes) == len(boxes):
         return True
     return False
