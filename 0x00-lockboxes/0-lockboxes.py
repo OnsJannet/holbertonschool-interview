@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """
-boxes are numbered sequentially from 0 to n - 1 and each box may contain keys to the other boxes.
+boxes are numbered sequentially from 0 to n - 1
+and each box may contain keys to the other boxes.
 """
+
 
 def canUnlockAll(boxes):
     ''' determines if all the boxes can be opened '''
