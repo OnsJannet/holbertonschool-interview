@@ -14,7 +14,7 @@ def minOperations(n):
     while n > 1:
         if n % number == 0:
             operation_count += number
-            n //= number
+            n /= number
         else:
             number += 1
     return(operation_count)
