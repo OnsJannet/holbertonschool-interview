@@ -19,7 +19,7 @@ int recursive_palindrome(listint_t **left, listint_t *right)
 		return (1);
 
 
-	int ispalindrome = recursive_palindrome(left, right->next) && ((*left)->n == right->n);
+	int ispalindrome = recursive_palindrome(left, right->next);
 
 	if (ispalindrome == 0)
 		return (0);
