@@ -1,12 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
 /**
  * is_palindrome_1 - checks if a singly linked list is a palindrome.
  *
- * @left: left side
- * @right: right side
+* @left: left side
+* @right: right side
  * Return: 0 if it is not a palindrome 1 if it is a palindrome.
  */
 
