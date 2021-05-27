@@ -1,46 +1,46 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
 /**
- * is_palindrome_1 - checks if a singly linked list is a palindrome.
- *
-* @left: left side
-* @right: right side
- * Return: 0 if it is not a palindrome 1 if it is a palindrome.
- */
+* recurse_list - Compares 1st and last node, then 2nd last and 2nd, etc
+*
+* @left: Keeps track of left side of list
+*
+* @right: Keeps track of nodes on right
+*
+* Return: 0 if it is not a palindrome, 1 if it is a palindrome
+*/
 
-int recursive_palindrome(listint_t **left, listint_t *right)
-
+int recurse_list(listint_t **left, listint_t *right)
 {
+	int result;
 
 
+	/* Base case for empty list*/
 	if (right == NULL)
+	{
 		return (1);
+	}
 
+	/* Check values at left and right then 2nd node & 2nd to last, etc */
+	result = recurse_list(left, right->next) && (*left)->n == right->n;
 
-	int ispalindrome = recursive_palindrome(left, right->next);
-
-	if (ispalindrome == 0)
-		return (0);
-
-
-	int ispalindrome1 = (right->n == (*left)->n);
-
-
+	/* Point left to next node */
 	*left = (*left)->next;
 
-	return (ispalindrome1);
+	return (result);
 }
 
 /**
- * is_palindrome - checks if a singly linked list is a palindrome.
- * @head: Double pointer to head of list
- * Return: 0 if it is not a palindrome 1 if it is a palindrome.
- */
+* is_palindrome - Checks if LL is a palindrome
+*
+* @head: Double pointer to head of list
+*
+* Return: 0 if it is not a palindrome, 1 if it is a palindrome
+*/
 
 int is_palindrome(listint_t **head)
 {
-	return (recursive_palindrome(head, *head));
+	listint_t *deref = *head;
 
+	return (recurse_list(&deref, deref));
 }
