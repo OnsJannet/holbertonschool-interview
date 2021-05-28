@@ -14,13 +14,13 @@ int recursive_palindrome(listint_t **left, listint_t *right)
 
 
 	if (right == NULL)
-		return (1);
+	return (1);
 
 
 	int ispalindrome = recursive_palindrome(left, right->next);
 
 	if (ispalindrome == 0)
-		return (0);
+	return (0);
 
 
 	int ispalindrome1 = (right->n == (*left)->n);
