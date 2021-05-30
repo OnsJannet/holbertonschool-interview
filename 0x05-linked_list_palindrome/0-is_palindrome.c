@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * is_palindrome_1 - checks if a singly linked list is a palindrome.
+ * recursive_palindrome- checks if a singly linked list is a palindrome.
  *
  * @left: left side
  * @right: right side
@@ -14,21 +14,21 @@ int recursive_palindrome(listint_t **left, listint_t *right)
 
 
 	if (right == NULL)
-	return (1);
+		return (1);
 
 
-	int ispalindrome = recursive_palindrome(left, right->next);
+	int ispalindrome = recursive_palindrome(left, right->next) &&
+	(right->n == (*left)->n);
 
 	if (ispalindrome == 0)
-	return (0);
+		return (0);
 
 
-	int ispalindrome1 = (right->n == (*left)->n);
 
 
 	*left = (*left)->next;
 
-	return (ispalindrome1);
+	return (ispalindrome);
 }
 
 /**
