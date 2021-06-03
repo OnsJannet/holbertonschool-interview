@@ -5,16 +5,17 @@
 if __name__ == '__main__':
 
     def printer(file_size, status):
-        """Print logs"""
-        sort = sorted(status.keys())
+
+        '''Print logs'''
+
         print("File size: {:d}".format(file_size))
-        for i in sort:
+        for i in sorted(status.keys()):
             if status[i] != 0:
                 print("{}: {}".format(i, status[i]))
 
     file_size = 0
     status = {"200": 0, "301": 0, "400": 0, "401": 0,
-         "403": 0, "404": 0, "405": 0, "500": 0}
+              "403": 0, "404": 0, "405": 0, "500": 0}
 
     counter = 0
     try:
@@ -25,7 +26,7 @@ if __name__ == '__main__':
 
                 try:
                     file_size += int(data[-1])
-                except:
+                except Exception:
                     pass
 
                 try:
@@ -33,7 +34,7 @@ if __name__ == '__main__':
                     if st in status:
                         status[st] += 1
 
-                except:
+                except Exception:
                     pass
                 if counter % 10 == 0:
                     printer(file_size, status)
@@ -41,4 +42,3 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         printer(file_size, status)
         raise
-
