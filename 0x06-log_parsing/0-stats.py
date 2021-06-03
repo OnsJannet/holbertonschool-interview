@@ -1,46 +1,44 @@
 #!/usr/bin/python3
 
-'''
-Reads stdin line by line and computes metrics
-'''
-import sys
+""" reads stdin line by line and computes metric"""
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 
-    def print_status(file_size, status_list):
-        """Prints the accumulated logs"""
-        print("File size: {}".format(file_size))
-        for status in sorted(status_list.keys()):
-            if status_list[status]:
-                    print("{}: {}".format(status, status_list[status]))
+    def printer(file_size, status):
+        """Print logs"""
+        sort = sorted(status.keys())
+        print("File size: {:d}".format(file_size))
+        for i in sort:
+            if status[i] != 0:
+                print("{}: {}".format(i, status[i]))
 
-
-    status_list = {"200": 0, "301": 0, "400": 0, "401": 0,
-                   "403": 0, "404": 0, "405": 0, "500": 0}
     file_size = 0
-    count = 0
+    status = {"200": 0, "301": 0, "400": 0, "401": 0,
+         "403": 0, "404": 0, "405": 0, "500": 0}
 
+    counter = 0
     try:
-        for line in sys.stdin:
-            count += 1
-            data = line.split()
+        with open(0) as f:
+            for line in f:
+                counter += 1
+                data = line.split()
 
-            try:
-                file_size += int(data[-1])
-            except:
-                pass
+                try:
+                    file_size += int(data[-1])
+                except:
+                    pass
 
-            try:
-                item = data[-2]
-                if item in status_list:
-                    status_list[item] +=1
-            except:
-                pass
+                try:
+                    st = data[-2]
+                    if st in status:
+                        status[st] += 1
 
-            if count % 10 == 0:
-                print_status(file_size, status_list)
-            print_status(file_size, status_list)
+                except:
+                    pass
+                if counter % 10 == 0:
+                    printer(file_size, status)
+            printer(file_size, status)
     except KeyboardInterrupt:
-        print_status(file_size, status_list)
+        printer(file_size, status)
         raise
 
