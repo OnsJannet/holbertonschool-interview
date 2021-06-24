@@ -25,7 +25,7 @@ def validUTF8(data):
                 continue
 
             # A character in UTF-8 can be 1 to 4 bytes long
-            if number_of_bytes == 1 or n_bytes > 4:
+            if number_of_bytes == 1 or number_of_bytes > 4:
                 return False
         else:
             # Else, we are processing integers which
