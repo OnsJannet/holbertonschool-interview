@@ -1,0 +1,45 @@
+#!/usr/bin/python3
+"""
+determines if a given data set represents a valid UTF-8 encoding
+returns True if data is a valid UTF-8 encoding
+returns False if data is not valid UTF-8 encoding
+"""
+
+
+def validUTF8(data):
+
+    number_of_bytes = 0  # number of bytes in the current UTF-8 char
+    # goes into the numbers of the given set
+    for numbers in data:
+        # prints the 8least sig bits
+        number_of_bin = format(numbers, '#010b')[-8:]
+        if number_of_bytes == 0:  # start processing a new UTF-8 char
+
+            # Get the number of 1s in the beginning of the string.
+            for bit in number_of_bin:
+                if bit == '0':
+                    break
+                number_of_bytes += 1
+
+            if number_of_bytes == 0:  # 1 byte characters
+                continue
+
+            # A character in UTF-8 can be 1 to 4 bytes long
+            if number_of_bytes in range(1, 4):
+                return False
+        else:
+            # Else, we are processing integers which
+            # represent bytes which are a part of
+            # a UTF-8 character. So, they must adhere
+            # to the pattern `10xxxxxx`.
+            if not number_of_bin.startswith('10'):
+                return False
+
+        # We reduce the number of bytes
+        # to process by 1 after each integer.
+        number_of_bytes -= 1
+
+    # This is for the case where we
+    # might not have the complete data for
+    # a particular UTF-8 character.
+    return number_of_bytes == 0
