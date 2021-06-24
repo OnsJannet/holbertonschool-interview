@@ -28,9 +28,9 @@ def validUTF8(data):
             if number_of_bytes == 1 or number_of_bytes > 4:
                 return False
         else:
-            # Else, we are processing integers which
-            # represent bytes which are a part of
-            # a UTF-8 character. So, they must adhere
+
+            # Bytes which are a part of
+            # a UTF-8 character must adhere
             # to the pattern `10xxxxxx`.
             if not number_of_bin.startswith('10'):
                 return False
@@ -39,7 +39,4 @@ def validUTF8(data):
         # to process by 1 after each integer.
         number_of_bytes -= 1
 
-    # This is for the case where we
-    # might not have the complete data for
-    # a particular UTF-8 character.
     return number_of_bytes == 0
