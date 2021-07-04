@@ -28,7 +28,7 @@ void print_grid(int grid[3][3])
  *
  * Return: 1 if it is unstable or 0 if not
  */
-int non_stable (int grid1[3][3])
+int non_stable(int grid1[3][3])
 {
 	int i, j;
 
@@ -99,7 +99,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 		for (j = 0; j < 3; j++)
 			grid1[i][j] = grid1[i][j] + grid2[i][j];
 	}
-	while (non_stable (grid1))
+	while (non_stable(grid1))
 	{
 		printf("=\n");
 		print_grid(grid1);

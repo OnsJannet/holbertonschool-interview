@@ -51,7 +51,7 @@ static void print_grid(int grid[3][3])
  */
 int main(void)
 {
-    int grid1[3][3] = {
+int grid1[3][3] = {
         {0, 0, 0},
         {0, 0, 0},
         {0, 0, 0}
