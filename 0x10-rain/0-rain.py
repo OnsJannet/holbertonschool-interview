@@ -2,6 +2,8 @@
 """
 Rain
 """
+
+
 def rain(walls: int) -> int:
     """calculation of rains"""
     if not walls:
