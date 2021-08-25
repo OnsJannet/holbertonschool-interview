@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
-* swap - swaps two integers
+* _swap - swaps two integers
 * @a: integer to swap
 * @b: integer to swap
 */
@@ -14,51 +14,59 @@ void swap(int *a, int *b)
 
 /**
  * heapify - turns an array into a max heap
- * @arr: array of integers to heapify
- * @n: current given index within array
- * @i: size of the array
+ * @array: array of integers to heapify
+ * @index: current given index within array
+ * @size: size of the array
+ * @len: length
  */
-void heapify(int arr[], int n, int i)
+
+void heapify(int *arr, int index, int size, int len)
 {
-	int max = i;
-	int leftChild = 2 * i + 1;
-	int rightChild = 2 * i + 2;
+	int left = index * 2 + 1;
+	int right = index * 2 + 2;
+	int max = index;
 
-
-	if (leftChild < n && arr[leftChild] > arr[max])
-		max = leftChild;
-
-
-	if (rightChild < n && arr[rightChild] > arr[max])
-		max = rightChild;
-
-
-	if (max != i)
+	if (left > 0 && left < len && arr[left] > arr[max])
 	{
-		swap(&arr[i], &arr[max]);
-		heapify(arr, n, max);
+		max = left;
+	}
+	if (right > 0 && right < len && arr[right] > arr[max])
+	{
+		max = right;
+	}
+	if (max != index)
+	{
+		swap(arr + max, arr + index);
+		print_array(arr, size);
+		heapify(arr, max, size, len);
 	}
 }
 
+
 /**
- * heap_sort - sorts an array of integers
- * in ascending order using the Heap
+ * heap_sort - sorts an array of integers in ascending order using the Heap
  * sort algorithm
- * @array: pointer to array
- * @size: size of the pointer
- *
- **/
+ * @array: array of integers to sort
+ * @size: size of the array
+ */
 
 void heap_sort(int *array, size_t size)
-
 {
-	for (int i = size / 2 - 1; i >= 0; i--)
-		heapify(array, size, i);
+	int i = size / 2 - 1;
+	int end = size - 1;
 
-	for (int i = size - 1; i >= 0; i--)
+	while (i >= 0)
 	{
-		swap(&array[0], &array[i]);
-		print_array(array, size);
-		heapify(array, i, 0);
+		heapify(array, i, size, size);
+		i--;
 	}
+
+	while (end > 0)
+	{
+		swap(array + end, array);
+		print_array(array, size);
+		heapify(array, 0, size, end);
+		end--;
+	}
+
 }
