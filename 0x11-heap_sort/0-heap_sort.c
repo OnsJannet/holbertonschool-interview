@@ -14,7 +14,7 @@ void swap(int *a, int *b)
 
 /**
  * heapify - turns an array into a max heap
- * @array: array of integers to heapify
+ * @arr: array of integers to heapify
  * @index: current given index within array
  * @size: size of the array
  * @len: length
