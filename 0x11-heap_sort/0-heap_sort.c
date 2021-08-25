@@ -68,5 +68,4 @@ void heap_sort(int *array, size_t size)
 		heapify(array, 0, size, end);
 		end--;
 	}
-
 }
