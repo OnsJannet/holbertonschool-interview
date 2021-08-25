@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
-* _swap - swaps two integers
+* swap - swaps two integers
 * @a: integer to swap
 * @b: integer to swap
 */
@@ -12,6 +12,12 @@ void swap(int *a, int *b)
 	*b = tmp;
 }
 
+/**
+ * heapify - turns an array into a max heap
+ * @arr: array of integers to heapify
+ * @n: current given index within array
+ * @i: size of the array
+ */
 void heapify(int arr[], int n, int i)
 {
 	int max = i;
@@ -34,6 +40,14 @@ void heapify(int arr[], int n, int i)
 	}
 }
 
+/**
+ * heap_sort - sorts an array of integers
+ * in ascending order using the Heap
+ * sort algorithm
+ * @array: pointer to array
+ * @size: size of the pointer
+ *
+ **/
 
 void heap_sort(int *array, size_t size)
 
