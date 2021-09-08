@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """  a recursive function that queries the Reddit API """
 import requests
 from sys import argv
