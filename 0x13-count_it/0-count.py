@@ -15,6 +15,10 @@ def list_creator(hot_subreddits, posts, posts_len):
 
 def count_words(subreddit, word_list, hot_subreddits=[], after=None):
     """ a recursive function that queries the Reddit API """
+
+    if len(argv) < 2:
+        return (None)
+
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     header = {'User-Agent': 'python3:holberton.task:v1.0'}
     payload = {'limit': '100', 'after': after}
