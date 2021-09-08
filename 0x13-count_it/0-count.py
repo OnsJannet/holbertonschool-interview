@@ -29,6 +29,8 @@ def count_words(subreddit, word_list, hot_subreddits=[], after=None):
         posts_len = len(posts)
         if posts_len != 0:
             (list_creator(hot_subreddits, posts, posts_len))
+        else:
+            None
         after = about['data']['after']
         if after is not None:
             return (count_words(subreddit, word_list, hot_subreddits, after))
@@ -45,4 +47,4 @@ def count_words(subreddit, word_list, hot_subreddits=[], after=None):
                 if count_dict[key] > 0:
                     print("{}: {}".format(key, count_dict[key]))
     else:
-        return
+        return None
