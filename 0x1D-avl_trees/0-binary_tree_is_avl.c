@@ -1,19 +1,5 @@
 #include "binary_trees.h"
 
-/**
- * binary_tree_is_avl - checks if a binary tree is a valid AVL Tree
- * @tree: pointer tot the root node of the tree to check
- * Return: 1 if tree is a valid AVL, otherwise 0
- */
-int binary_tree_is_avl(const binary_tree_t *tree)
-{
-	int height = 0;
-
-	if (!tree)
-		return (0);
-	return (is_binary_search_tree(tree, INT_MIN, INT_MAX, &height));
-}
-
 
 /**
  * is_binary_search_tree - checks if tree is a binary search tree
@@ -42,4 +28,18 @@ int is_binary_search_tree(const binary_tree_t *node, int min, int max,
 		return (0);
 	*height = (left_h > right_h ? left_h : right_h) + 1;
 	return (abs(left_h - right_h) < 2);
+}
+
+/**
+ * binary_tree_is_avl - checks if a binary tree is a valid AVL Tree
+ * @tree: pointer tot the root node of the tree to check
+ * Return: 1 if tree is a valid AVL, otherwise 0
+ */
+int binary_tree_is_avl(const binary_tree_t *tree)
+{
+	int height = 0;
+
+	if (!tree)
+		return (0);
+	return (is_binary_search_tree(tree, INT_MIN, INT_MAX, &height));
 }
